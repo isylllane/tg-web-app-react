@@ -46,6 +46,7 @@ const ProductList = () => {
       })
     }
   }
+
   return (
       <div className={'list'}>
         {products.map(item => (
