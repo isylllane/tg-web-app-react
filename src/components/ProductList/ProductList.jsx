@@ -15,15 +15,14 @@ const products = [
   {id: '8', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая'},
 ]
 
-const getTotalPrice = (items) => {
-  return items.reduce((total, item) => {
-    return total += item.price;
+const getTotalPrice = (items = []) => {
+  return items.reduce((acc, item) => {
+    return acc += item.price
   }, 0)
 }
 
 const ProductList = () => {
   const [addedItems, setAddedItems] = useState([]);
-
   const {tg, queryId} = useTelegram();
 
   const onSendData = useCallback(() => {
@@ -65,7 +64,7 @@ const ProductList = () => {
     } else {
       tg.MainButton.show();
       tg.MainButton.setParams({
-        text: `Купить ${getTotalPrice(newItems)} руб.`
+        text: `Купить ${getTotalPrice(newItems)}`
       })
     }
   }
